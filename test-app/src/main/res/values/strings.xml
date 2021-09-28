@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">SetApp Test</string>
+    <string name="text_int">int</string>
+    <string name="text_long">long</string>
+    <string name="text_float">float</string>
+    <string name="text_string">string</string>
+    <string name="text_boolean">boolean</string>
+    <string name="key">Key</string>
+</resources>
