@@ -10,7 +10,7 @@
 
     <application>
         <provider
-            android:name="io.setapp.android.settings.client.SettingsClientInitializer"
+            android:name="io.setapp.android.settings.client.internal.SettingsClientInitializer"
             android:authorities="${applicationId}.settings.client.initializer"
             android:exported="false"
             android:initOrder="101" />

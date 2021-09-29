@@ -8,7 +8,7 @@ internal object SettingsClientContext {
         private set
 
     fun initialize(context: Context) {
-        this.applicationContext = context.applicationContext
+        applicationContext = context.applicationContext
     }
 
 }

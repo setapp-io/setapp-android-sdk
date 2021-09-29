@@ -1,4 +1,4 @@
-package io.setapp.android.settings.client
+package io.setapp.android.settings.client.internal
 
 import android.content.ContentProvider
 import android.content.ContentValues
@@ -6,6 +6,7 @@ import android.content.Context
 import android.content.pm.ProviderInfo
 import android.database.Cursor
 import android.net.Uri
+import io.setapp.android.settings.client.SettingsClientContext
 
 class SettingsClientInitializer : ContentProvider() {
 
