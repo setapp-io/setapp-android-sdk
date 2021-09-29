@@ -1,0 +1,14 @@
+apply plugin: 'org.jetbrains.dokka'
+
+dokkaJavadoc {
+    suppressObviousFunctions.set(true)
+    dokkaSourceSets {
+        configureEach {
+            perPackageOption {
+                // will match all .internal packages and sub-packages
+                matchingRegex.set(".*\\.internal.*")
+                suppress.set(true)
+            }
+        }
+    }
+}

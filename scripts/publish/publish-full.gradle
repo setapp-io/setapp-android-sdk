@@ -1,0 +1,61 @@
+apply plugin: 'maven-publish'
+
+task androidSourcesJarFull(type: Jar) {
+    android.libraryVariants.all { variant ->
+        if (variant.name.startsWith("full")) {
+            variant.sourceSets.forEach { sourceSet ->
+                from sourceSet.java.srcDirs
+            }
+        }
+    }
+    archiveClassifier.set('sources')
+}
+
+artifacts {
+    archives androidSourcesJarFull
+}
+
+afterEvaluate {
+    publishing {
+        publications {
+            fullRelease(MavenPublication) {
+                groupId = PUBLISH_GROUP_ID
+                artifactId = PUBLISH_ARTIFACT_ID
+                version = PUBLISH_VERSION_NAME
+
+                from components.fullRelease
+
+                artifact androidSourcesJarFull
+                artifact javadocJar
+
+                pom {
+                    name = POM_NAME
+                    description = POM_DESCRIPTION
+                    inceptionYear = POM_INCEPTION_YEAR
+                    packaging = POM_PACKAGING
+                    url = POM_URL
+                    licenses {
+                        license {
+                            name = POM_LICENCE_NAME
+                            url = POM_LICENCE_URL
+                            distribution = POM_LICENCE_DIST
+                        }
+                    }
+                    developers {
+                        developer {
+                            id = POM_DEVELOPER_ID
+                            name = POM_DEVELOPER_NAME
+                            email = POM_DEVELOPER_EMAIL
+                            url = POM_DEVELOPER_URL
+                        }
+                    }
+                    scm {
+                        connection = POM_SCM_CONNECTION
+                        developerConnection = POM_SCM_DEV_CONNECTION
+                        url = POM_SCM_URL
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,45 @@
+apply plugin: 'maven-publish'
+apply plugin: 'signing'
+apply from: "$rootDir/scripts/variables.gradle"
+apply from: "$rootDir/scripts/documentation.gradle"
+
+tasks.withType(dokkaHtmlPartial.getClass()).configureEach {
+    pluginsMapConfiguration.set(
+            ["org.jetbrains.dokka.base.DokkaBase": """{ "separateInheritedMembers": true}"""]
+    )
+}
+
+task javadocJar(type: Jar, dependsOn: dokkaJavadoc) {
+    from dokkaJavadoc.outputDirectory
+    archiveClassifier.set('javadoc')
+}
+
+artifacts {
+    archives javadocJar
+}
+
+publishing {
+    repositories {
+        maven {
+            if (PUBLISH_VERSION_NAME.endsWith("SNAPSHOT")) {
+                url = uri(REPOSITORY_SNAPSHOT_URL)
+            } else {
+                url = uri(REPOSITORY_URL)
+            }
+            allowInsecureProtocol = true
+
+            credentials {
+                username = ossrhUsername
+                password = ossrhPassword
+            }
+        }
+    }
+}
+
+ext["signing.keyId"] = signingKeyId
+ext["signing.password"] = signingPassword
+ext["signing.secretKeyRingFile"] = signingSecretKeyRingFile
+
+signing {
+    sign publishing.publications
+}

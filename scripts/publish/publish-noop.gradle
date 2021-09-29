@@ -1,0 +1,61 @@
+apply plugin: 'maven-publish'
+
+task androidSourcesJarNoop(type: Jar) {
+    android.libraryVariants.all { variant ->
+        if (variant.name.startsWith("noop")) {
+            variant.sourceSets.forEach { sourceSet ->
+                from sourceSet.java.srcDirs
+            }
+        }
+    }
+    archiveClassifier.set('sources')
+}
+
+artifacts {
+    archives androidSourcesJarNoop
+}
+
+afterEvaluate {
+    publishing {
+        publications {
+            noopRelease(MavenPublication) {
+                groupId = PUBLISH_GROUP_ID
+                artifactId = PUBLISH_ARTIFACT_ID_NOOP
+                version = PUBLISH_VERSION_NAME
+
+                from components.noopRelease
+
+                artifact androidSourcesJarFull
+                artifact javadocJar
+
+                pom {
+                    name = POM_NAME_NOOP
+                    description = POM_DESCRIPTION
+                    inceptionYear = POM_INCEPTION_YEAR
+                    packaging = POM_PACKAGING
+                    url = POM_URL
+                    licenses {
+                        license {
+                            name = POM_LICENCE_NAME
+                            url = POM_LICENCE_URL
+                            distribution = POM_LICENCE_DIST
+                        }
+                    }
+                    developers {
+                        developer {
+                            id = POM_DEVELOPER_ID
+                            name = POM_DEVELOPER_NAME
+                            email = POM_DEVELOPER_EMAIL
+                            url = POM_DEVELOPER_URL
+                        }
+                    }
+                    scm {
+                        connection = POM_SCM_CONNECTION
+                        developerConnection = POM_SCM_DEV_CONNECTION
+                        url = POM_SCM_URL
+                    }
+                }
+            }
+        }
+    }
+}

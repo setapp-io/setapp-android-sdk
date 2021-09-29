@@ -43,7 +43,7 @@ val intValue = SetappSettings.getInt("YOUR_KEY_HERE", -1)
 val longValue = SetappSettings.getLong("YOUR_KEY_HERE", -1L)
 ```
 
-#### Get foat value
+#### Get float value
 
 ```kotlin
 val floatValue = SetappSettings.getFloat("YOUR_KEY_HERE", -1F)

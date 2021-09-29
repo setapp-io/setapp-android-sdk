@@ -1,0 +1,3 @@
+apply from: "$rootDir/scripts/publish/publish-base.gradle"
+apply from: "$rootDir/scripts/publish/publish-full.gradle"
+apply from: "$rootDir/scripts/publish/publish-noop.gradle"
