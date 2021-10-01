@@ -1,4 +1,19 @@
+apply plugin: 'io.gitlab.arturbosch.detekt'
 apply plugin: "org.jlleitschuh.gradle.ktlint"
+
+detekt {
+    input = files(
+            "src/main/java",
+            "src/full/java",
+            "src/noop/java",
+    )
+    config = files("$rootDir/static-analysis/detekt-config.yml")
+    reports {
+        html.enabled = true
+        xml.enabled = true
+    }
+    parallel = true
+}
 
 ktlint {
     debug = true
@@ -12,7 +27,5 @@ ktlint {
 
     filter {
         exclude("**/generated/**")
-//            exclude("**/test/**")
-//            exclude("**/androidTest/**")
     }
 }
