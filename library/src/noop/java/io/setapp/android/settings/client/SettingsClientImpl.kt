@@ -1,6 +1,5 @@
 package io.setapp.android.settings.client
 
-
 internal fun SettingsClient(): SettingsClient = SettingsClientImpl()
 
 internal class SettingsClientImpl : SettingsClient {

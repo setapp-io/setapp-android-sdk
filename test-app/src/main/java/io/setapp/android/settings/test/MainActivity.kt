@@ -41,7 +41,6 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-
     private fun registerButtonClickListener(@IdRes id: Int, block: (String) -> Any) {
         findViewById<Button>(id)?.setOnClickListener {
             getKey {

@@ -5,7 +5,6 @@ import android.database.Cursor
 import android.net.Uri
 import android.util.Log
 
-
 internal fun SettingsClient(): SettingsClient {
     val context = SettingsClientContext.applicationContext ?: throw IllegalStateException("")
     return SettingsClientImpl(context.contentResolver, context.packageName)
@@ -38,7 +37,6 @@ internal class SettingsClientImpl(
     override fun getBoolean(key: String, default: Boolean): Boolean {
         return get(key, SettingsType.BOOLEAN, default) { getInt(1) == 1 }
     }
-
 
     private fun createQueryUri(type: SettingsType, key: String): Uri = baseUri.buildUpon()
         .appendPath(VERSION)

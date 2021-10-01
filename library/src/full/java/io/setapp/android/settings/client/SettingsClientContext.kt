@@ -10,5 +10,4 @@ internal object SettingsClientContext {
     fun initialize(context: Context) {
         applicationContext = context.applicationContext
     }
-
 }
