@@ -1,11 +1,12 @@
-# SetApp
+# setapp
 
-To set up SetApp SDK for Android, you need to add the necessary dependencies to your app.
+See the [project website](https://setapp.io/) for documentation.
+
+To set up setapp SDK for Android, you need to add the necessary dependencies to your app.
 
 ## Dependencies
 
-Setapp is distributed through [***
-mavenCentral***](https://search.maven.org/artifact/io.setapp/setapp). To use it, you need to add the
+Setapp is distributed through [***mavenCentral***](https://search.maven.org/artifact/io.setapp/setapp). To use it, you need to add the
 following to your project's root `build.gradle` file
 
 ```groovy
