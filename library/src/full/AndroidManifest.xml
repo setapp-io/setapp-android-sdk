@@ -3,9 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <queries>
-        <provider
-            android:authorities="io.setapp.android.settings.provider"
-            tools:ignore="ExportedContentProvider" />
+        <package android:name="io.setapp.android" />
     </queries>
 
     <application>
