@@ -42,7 +42,12 @@ android {
 }
 
 dependencies {
-    implementation project(path: ':library')
+    if (SETAPP_SDK_LOCAL === "true") {
+        implementation project(path: ':library')
+    } else {
+        debugImplementation "io.setapp:setapp:$SETAPP_SDK_REMOTE_VERSION"
+        releaseImplementation "io.setapp:setapp-noop:$SETAPP_SDK_REMOTE_VERSION"
+    }
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
     implementation 'androidx.core:core-ktx:1.6.0'
