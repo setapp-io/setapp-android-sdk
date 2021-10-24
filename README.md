@@ -1,6 +1,12 @@
 # setapp
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/io.setapp/setapp/badge.svg)](https://maven-badges.herokuapp.com/maven-central/io.setapp/setapp)
+[![Build](https://github.com/setapp-io/setapp-android-sdk/actions/workflows/ci.yml/badge.svg)](https://github.com/setapp-io/setapp-android-sdk/actions/workflows/ci.yml)
 
-See the [project website](https://setapp.io/) for documentation.
+Setapp is an android application that lets you change the behavior and appearance of your app without requiring a rebuilt app. When using the setapp client library, you call settings with in-app default values that control the behavior and appearance of your app. Then, you can later use the [setapp application](https://play.google.com/store/apps/details?id=io.setapp.android) to override in-app default values for the app. See the [project website](https://setapp.io/) for documentation.
+
+<p align="center">
+  <img src="https://setapp.io/images/workflow.gif" alt="setapp demo"/>
+</p>
 
 To set up setapp SDK for Android, you need to add the necessary dependencies to your app.
 
