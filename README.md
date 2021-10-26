@@ -41,29 +41,29 @@ For getting value from setapp application just cal one of the following methods.
 #### Get int value
 
 ```kotlin
-val intValue = SetappSettings.getInt("YOUR_KEY_HERE", -1)
+val value = Settings.getInt("YOUR_KEY_HERE", -1)
 ```
 
 #### Get long value
 
 ```kotlin
-val longValue = SetappSettings.getLong("YOUR_KEY_HERE", -1L)
+val value = Settings.getLong("YOUR_KEY_HERE", -1L)
 ```
 
 #### Get float value
 
 ```kotlin
-val floatValue = SetappSettings.getFloat("YOUR_KEY_HERE", -1F)
+val value = Settings.getFloat("YOUR_KEY_HERE", -1F)
 ```
 
 #### Get string value
 
 ```kotlin
-val stringValue = SetappSettings.getString("YOUR_KEY_HERE", "")
+val value = Settings.getString("YOUR_KEY_HERE", "")
 ```
 
 #### Get boolean value
 
 ```kotlin
-val booleanValue = SetappSettings.getBoolean("YOUR_KEY_HERE", false)
+val value = Settings.getBoolean("YOUR_KEY_HERE", false)
 ```
