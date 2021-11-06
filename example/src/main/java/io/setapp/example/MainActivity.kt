@@ -1,4 +1,4 @@
-package io.setapp.android.settings.test
+package io.setapp.example
 
 import android.os.Bundle
 import android.view.View

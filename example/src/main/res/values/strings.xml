@@ -1,7 +1,7 @@
 <resources>
-    <string name="app_name">setapp test</string>
+    <string name="app_name">setapp example</string>
     <string name="username">username</string>
     <string name="password">password</string>
     <string name="login">login</string>
-    <string name="setapp_test_login">setapp test login</string>
+    <string name="setapp_test_login">setapp example</string>
 </resources>
