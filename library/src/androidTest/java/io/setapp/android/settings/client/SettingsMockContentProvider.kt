@@ -14,7 +14,7 @@ class SettingsMockContentProvider : MockContentProvider() {
         selectionArgs: Array<out String>?,
         sortOrder: String?
     ): Cursor? {
-        val baseUrl = "content://$AUTHORITY/v1/io.setapp.android.settings.client"
+        val baseUrl = "content://$AUTHORITY/v1/$PACKAGE_NAME"
         val paths = mapOf<String, Any>(
             "$baseUrl/INT/$KEY_INT" to VALUE_INT,
             "$baseUrl/LONG/$KEY_LONG" to VALUE_LONG,
@@ -35,7 +35,7 @@ class SettingsMockContentProvider : MockContentProvider() {
 
     companion object {
         const val AUTHORITY = "io.setapp.android.settings.provider"
-        const val PACKAGE_NAME = "io.setapp.android.settings.client"
+        const val PACKAGE_NAME = "io.setapp.test"
 
         const val KEY_INT = "key_int"
         const val KEY_LONG = "key_long"

@@ -1,9 +1,7 @@
 <resources>
-    <string name="app_name">SetApp Test</string>
-    <string name="text_int">int</string>
-    <string name="text_long">long</string>
-    <string name="text_float">float</string>
-    <string name="text_string">string</string>
-    <string name="text_boolean">boolean</string>
-    <string name="key">Key</string>
+    <string name="app_name">setapp test</string>
+    <string name="username">username</string>
+    <string name="password">password</string>
+    <string name="login">login</string>
+    <string name="setapp_test_login">setapp test login</string>
 </resources>

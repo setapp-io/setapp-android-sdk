@@ -1,52 +1,67 @@
 package io.setapp.android.settings.test
 
 import android.os.Bundle
+import android.view.View
 import android.widget.Button
-import android.widget.TextView
+import android.widget.EditText
 import android.widget.Toast
-import androidx.annotation.IdRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.doOnTextChanged
 import io.setapp.android.settings.client.Settings
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), View.OnClickListener {
 
-    private var txtKey: TextView? = null
-    private var txtValue: TextView? = null
-
-    private var key: String? = null
+    private var etUser: EditText? = null
+    private var etPassword: EditText? = null
+    private var username: String = ""
+    private var password: String = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        txtKey = findViewById(R.id.key)
-        txtKey?.doOnTextChanged { text, _, _, _ -> key = text?.toString() }
-        txtValue = findViewById(R.id.value)
+        etUser = findViewById(R.id.username)
+        etUser?.doOnTextChanged { text, _, _, _ -> username = text?.toString() ?: "" }
 
-        registerButtonClickListener(R.id.btn_int) { Settings.getInt(it, -1) }
-        registerButtonClickListener(R.id.btn_long) { Settings.getLong(it, -2L) }
-        registerButtonClickListener(R.id.btn_float) { Settings.getFloat(it, -3.0f) }
-        registerButtonClickListener(R.id.btn_string) { Settings.getString(it, "-4") }
-        registerButtonClickListener(R.id.btn_boolean) { Settings.getBoolean(it, true) }
+        etPassword = findViewById(R.id.password)
+        etPassword?.doOnTextChanged { text, _, _, _ -> password = text?.toString() ?: "" }
+
+        val bCheck = findViewById<Button>(R.id.check)
+        bCheck.setOnClickListener(this)
     }
 
-    private fun getKey(block: (String) -> Unit) {
-        val k = key
-        if (k != null) {
-            block(k)
+    override fun onResume() {
+        super.onResume()
+        updateField(etUser, KEY_USERNAME)
+        updateField(etPassword, KEY_PASSWORD)
+    }
+
+    override fun onClick(p0: View?) {
+        if (username == USERNAME && password == PASSWORD) {
+            Toast.makeText(this, "The username and password are correct.", Toast.LENGTH_SHORT)
+                .show()
         } else {
-            Toast.makeText(this, "Please set key", Toast.LENGTH_SHORT)
+            Toast.makeText(this, "The username or password is incorrect.", Toast.LENGTH_SHORT)
                 .show()
         }
     }
 
-    private fun registerButtonClickListener(@IdRes id: Int, block: (String) -> Any) {
-        findViewById<Button>(id)?.setOnClickListener {
-            getKey {
-                val value = block.invoke(it)
-                txtValue?.text = value.toString()
-            }
+    private fun updateField(editText: EditText?, key: String) {
+        if (editText == null) {
+            return
         }
+
+        val current: String = editText.text?.toString() ?: ""
+        val value = Settings.getString(key, current)
+
+        editText.setText(value)
+    }
+
+    companion object {
+        private const val KEY_USERNAME = "username"
+        private const val KEY_PASSWORD = "password"
+
+        private const val USERNAME = "admin"
+        private const val PASSWORD = "password"
     }
 }
