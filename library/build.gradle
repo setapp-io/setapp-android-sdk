@@ -14,7 +14,7 @@ android {
     useLibrary 'android.test.mock'
 
     defaultConfig {
-        minSdkVersion 21
+        minSdkVersion 15
         targetSdkVersion 31
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"

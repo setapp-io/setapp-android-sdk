@@ -8,8 +8,8 @@ android {
     buildToolsVersion "31.0.0"
 
     defaultConfig {
-        applicationId "io.setapp.android.settings.test"
-        minSdkVersion 21
+        applicationId "io.setapp.test"
+        minSdkVersion 15
         targetSdkVersion 31
         versionCode 1
         versionName "1.0"
@@ -42,7 +42,7 @@ android {
 }
 
 dependencies {
-    if (SETAPP_SDK_LOCAL === "true") {
+    if (SETAPP_SDK_LOCAL == "true") {
         implementation project(path: ':library')
     } else {
         debugImplementation "io.setapp:setapp:$SETAPP_SDK_REMOTE_VERSION"
@@ -50,10 +50,10 @@ dependencies {
     }
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
-    implementation 'androidx.core:core-ktx:1.6.0'
+    implementation 'androidx.core:core-ktx:1.7.0'
     implementation 'androidx.appcompat:appcompat:1.3.1'
     implementation 'com.google.android.material:material:1.4.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.1.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.1'
     implementation "androidx.lifecycle:lifecycle-runtime-ktx:$lifecycle_version"
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
 }
