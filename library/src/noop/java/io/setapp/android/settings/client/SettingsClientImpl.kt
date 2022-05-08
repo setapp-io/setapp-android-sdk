@@ -22,4 +22,24 @@ internal class SettingsClientImpl : SettingsClient {
     override fun getBoolean(key: String, default: Boolean): Boolean {
         return default
     }
+
+    override fun getIntOrNull(key: String): Int? {
+        return null
+    }
+
+    override fun getLongOrNull(key: String): Long? {
+        return null
+    }
+
+    override fun getFloatOrNull(key: String): Float? {
+        return null
+    }
+
+    override fun getStringOrNull(key: String): String? {
+        return null
+    }
+
+    override fun getBooleanOrNull(key: String): Boolean? {
+        return null
+    }
 }

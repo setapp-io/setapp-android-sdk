@@ -38,6 +38,26 @@ internal class SettingsClientImpl(
         return get(key, SettingsType.BOOLEAN, default) { getInt(1) == 1 }
     }
 
+    override fun getIntOrNull(key: String): Int? {
+        return getOrNull(key, SettingsType.INT) { getInt(1) }
+    }
+
+    override fun getLongOrNull(key: String): Long? {
+        return getOrNull(key, SettingsType.LONG) { getLong(1) }
+    }
+
+    override fun getFloatOrNull(key: String): Float? {
+        return getOrNull(key, SettingsType.FLOAT) { getFloat(1) }
+    }
+
+    override fun getStringOrNull(key: String): String? {
+        return getOrNull(key, SettingsType.STRING) { getString(1) }
+    }
+
+    override fun getBooleanOrNull(key: String): Boolean? {
+        return getOrNull(key, SettingsType.BOOLEAN) { getInt(1) == 1 }
+    }
+
     private fun createQueryUri(type: SettingsType, key: String): Uri = baseUri.buildUpon()
         .appendPath(VERSION)
         .appendPath(packageName)
@@ -54,7 +74,27 @@ internal class SettingsClientImpl(
                 null, null, null, null
             )
 
-            if (cursor?.moveToFirst() != null) {
+            if (cursor?.moveToFirst() == true) {
+                result = cursor.block()
+            }
+        } finally {
+            cursor?.close()
+        }
+
+        Log.d("SettingsClient", "get $key is $result")
+        return result
+    }
+
+    private fun <T> getOrNull(key: String, type: SettingsType, block: Cursor.() -> T): T? {
+        var cursor: Cursor? = null
+        var result: T? = null
+        try {
+            cursor = contentResolver.query(
+                createQueryUri(type, key),
+                null, null, null, null
+            )
+
+            if (cursor?.moveToFirst() == true) {
                 result = cursor.block()
             }
         } finally {
