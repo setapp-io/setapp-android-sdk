@@ -95,6 +95,7 @@ object Settings {
      *
      * @throws ClassCastException
      */
+    @JvmStatic
     @Throws(ClassCastException::class)
     fun getIntOrNull(key: String): Int? = settingsClient.getIntOrNull(key)
 
@@ -109,6 +110,7 @@ object Settings {
      *
      * @throws ClassCastException
      */
+    @JvmStatic
     @Throws(ClassCastException::class)
     fun getLongOrNull(key: String): Long? = settingsClient.getLongOrNull(key)
 
@@ -123,6 +125,7 @@ object Settings {
      *
      * @throws ClassCastException
      */
+    @JvmStatic
     @Throws(ClassCastException::class)
     fun getFloatOrNull(key: String): Float? = settingsClient.getFloatOrNull(key)
 
@@ -137,6 +140,7 @@ object Settings {
      *
      * @throws ClassCastException
      */
+    @JvmStatic
     @Throws(ClassCastException::class)
     fun getStringOrNull(key: String): String? = settingsClient.getStringOrNull(key)
 
@@ -151,6 +155,7 @@ object Settings {
      *
      * @throws ClassCastException
      */
+    @JvmStatic
     @Throws(ClassCastException::class)
     fun getBooleanOrNull(key: String): Boolean? = settingsClient.getBooleanOrNull(key)
 }
