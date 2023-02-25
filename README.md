@@ -17,9 +17,7 @@ following to your project's root `build.gradle` file
 
 ```groovy
 repositories {
-    maven {
-      mavenCentral()
-    }
+    mavenCentral()
 }
 ```
 
